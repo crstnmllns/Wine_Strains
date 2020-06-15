@@ -1,0 +1,32 @@
+<%= form_with(model: oenologist_wine, local: true) do |form| %>
+  <% if oenologist_wine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(oenologist_wine.errors.count, "error") %> prohibited this oenologist_wine from being saved:</h2>
+
+      <ul>
+      <% oenologist_wine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :oenologist_id %>
+    <%= form.select :oenologist_id, @oenologists.map{|oenologists|[oenologists.name ,oenologists.id] },prompt:"Seleccione una Enologo.."%>
+  </div>
+
+  <div class="field">
+    <%= form.label :wine_id %>
+    <%= form.select :wine_id, @wines.map { |wines| [wines.trademark, wines.id]} ,prompt:"Seleccione una Vino.." %>
+  </div>
+
+  <div class="field">
+    <%= form.label :qualification %>
+    <%= form.number_field :qualification %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

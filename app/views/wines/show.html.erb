@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Trademark:</strong>
+  <%= @wine.trademark %>
+</p>
+
+<p>
+  <strong>Qualification:</strong>
+  <%= @wine.qualification %>
+</p>
+
+<p>
+  <strong>Strains:</strong>
+  <%= @wine.strains.map(&:name).join(',') %>
+</p>
+
+<p>
+  <strong>Oenologist:</strong>
+  <%= @wine.oenologists.map{ |x| "#{x.name}, #{x.age}"}.join(',') %>
+</p>
+
+<%= link_to 'Edit', edit_wine_path(@wine) %> |
+<%= link_to 'Back', wines_path %>
